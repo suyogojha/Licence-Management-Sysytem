@@ -1,0 +1,227 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+}
+
+//fonts variable 
+$Montserrat-Bold : "Montserrat-Bold";
+$Montserrat-Medium : "Montserrat-Medium";
+$Montserrat-Regular : "Montserrat-Regular";
+$Montserrat-SemiBold : "Montserrat-SemiBold";
+
+
+
+
+$fonts-list:(
+    $Montserrat-Bold : "Montserrat-Bold",
+    $Montserrat-Medium : "Montserrat-Medium",
+    $Montserrat-Regular : "Montserrat-Regular",
+    $Montserrat-SemiBold : "Montserrat-SemiBold"
+);
+
+@each $font-name, $src_name in $fonts-list {
+    @font-face {
+        font-family:"#{$font-name}";
+        @if($font-name=="vrb"){
+            src: url(../fonts/#{$src_name}.otf);
+        }@else{
+            src: url(../fonts/#{$src_name}.ttf);
+        }
+    }
+}
+
+body{
+    color: #121212;
+}
+.container-fluid{padding: 0;}
+.form-box{
+    margin: 0 auto;
+    margin-top: 150px;
+    max-width: 400px;
+    position: relative;
+    width: 100%;
+    h2{
+        font-family: $Montserrat-Bold;
+        font-size: 40px;
+        color: #121212
+    }
+    hr{
+        border:2px solid #F61D5E;
+        margin: 25px auto;
+        max-width: 100px;
+
+    }
+    h4{
+        font-family: $Montserrat-Medium;
+        font-size: 20px;
+        color: #717171;
+        text-align: center;
+        margin: 30px auto;
+        margin-bottom: 50px;
+        line-height: 1.5
+    }
+    p{
+        font-family: $Montserrat-Medium;
+        font-size: 14px;
+        color: #121212;
+        opacity: 0.5;
+       
+    }
+    input[type='text'],input[type='password']{
+        border: none;
+        border-bottom: 1px solid #E7E7E7;
+        border-radius: 0;
+        font-size: 18px;
+        font-family: $Montserrat-Medium;
+        color: #121212;
+        padding: 25px 0;
+    }
+    button.btn{
+        font-family: $Montserrat-Regular;
+        font-size: 16px;
+        color: #FFFFFF;
+        background: #FB3B71;
+        font-weight: normal;
+        border-radius: 30px;
+        padding: 12.5px 0;
+        outline: none;
+        box-shadow: 0 3px 20px rgba(254, 60, 114,0.45);
+        margin-top: 50px;
+        &:hover{
+            background: darken(#FB3B71, 20%)
+        }
+    }
+    .fas{
+        position: absolute;
+        right: 0;
+        margin-top: -30px;
+        color: #121212;
+        opacity: 0.25;
+        cursor: pointer;
+    }
+    .aggry{
+        input[type=checkbox] + label {
+            display: block;
+            margin: 0.2em;
+            cursor: pointer;
+            padding: 0.2em;
+          }
+          
+          input[type=checkbox] {
+            display: none;
+          }
+          
+          input[type=checkbox] + label:before {
+            content: "\2714";
+            border: 0.1em solid rgba(18, 18, 18,0.25);
+    
+        
+            border-radius: 0.2em;
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            padding-left: 0.2em;
+            padding-bottom: 0.3em;
+            margin-right: 0.2em;
+            vertical-align: bottom;
+            color: transparent;
+            transition: .2s;
+          }
+          
+          input[type=checkbox] + label:active:before {
+            transform: scale(0);
+          }
+          
+          input[type=checkbox]:checked + label:before {
+            background-color: #FB3B71;
+            border-color: #FB3B71;
+            color: #fff;
+          }
+          
+          input[type=checkbox]:disabled + label:before {
+            transform: scale(1);
+            border-color: #aaa;
+          }
+          
+          input[type=checkbox]:checked:disabled + label:before {
+            transform: scale(1);
+            background-color: #bfb;
+            border-color: #bfb;
+          }
+          label{
+              font-family: $Montserrat-Medium;
+            span{
+                top: 5px;
+                position: relative;
+                margin-left: 5px;
+                color: #121212;
+                opacity: 0.5;
+            }
+          }
+    }
+    .frgt{
+        a{
+            color: #121212;
+            opacity: 0.5;
+            margin-top: 10px;
+            display: block
+        }
+    }
+    &::before, &::after{
+        position: absolute;
+        content: "";
+        height: 62px;
+        width: 62px;
+        background: url(../images/dots-top.png);
+        left: 0;
+        margin-left: -62px;
+        margin-top: -62px;
+    }
+    &::after{
+        background: url(../images/dots-bottom.png);
+        left: auto;
+        right: 0;
+        margin-right: -62px;
+        margin-top: 0px;
+    }
+}
+p.ac{
+    color: #121212;
+    opacity: 0.5;
+    font-family: $Montserrat-Medium;
+    margin-top: 150px;
+    margin-bottom: 50px;
+    a{
+        font-family: $Montserrat-SemiBold;
+        color: #121212;
+        font-weight: normal;
+        text-decoration: underline;
+        opacity: 1;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

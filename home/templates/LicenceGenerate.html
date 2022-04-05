@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creating PDF from HTML</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="html2pdf.bundle.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.0/html2pdf.bundle.min.js"></script>
+
+
+    <style>
+        h1{
+            text-align: right;
+        }
+        .tab{
+            margin-left: 30px;
+            margin-top: 10px;
+        }
+        .tab2{
+            margin-left: 30px;
+        }
+        .img1{
+            height: 90px;
+            border-radius: 30px;
+        }
+        .img2{
+            height: 90px;
+            width: 100px;
+        }
+        .img3{
+            height: 60px;
+        }
+        .gov{
+            color: red;
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 28px;
+            margin-left: 29px;
+
+        }
+        .gov2{
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 11px;
+            margin-left: 90px;
+        }
+        .aq{
+            width: 150px;
+        
+        }
+        .btn{
+          border: 1px solid red;
+          padding: 5px;
+          margin: 5px;
+          background-color: rgb(211, 240, 198);
+          text-decoration: none;
+          text-align: center;
+        }
+        .navbar{
+          text-align: center;
+          font-size: 28px;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.debug.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js" ></script>
+</head>
+<body>
+<!-- Just an image -->
+<nav class="navbar navbar-light bg-light">
+  <a class="btn" class="navbar-brand" href="{% url 'home:Dashboard' %}">
+    Dashboard
+  </a>
+</nav>
+
+
+
+    <div  class="container-fluid">
+        <div class="container">
+            <div class="part1">
+                <fieldset>
+                    <legend>Licence Details</legend>
+                    Full Name: <input type="text" id="name"> <br/>
+                    Licence No: <input type="text" id="licenceno">
+                    Father Name: <input type="text" id="fathername">
+                    Blood Group: <input type="text" id="bloodgroup">
+                    Address: <input type="text" id="address">
+                    Date of birth: <input type="date" id="dateofbirth">
+                    Citizinship No: <input type="text" id="citizinshipno">
+                    Contact No: <input type="text" id="contactno">
+                    Category: <input type="text" id="category">
+                    D.O.I: <input type="date" id="doi">
+                    D.O.E: <input type="date" id="doe">
+                </fieldset>
+            </div>
+        </div>
+    
+        <div id="mypdf">
+
+        <div class="container">
+
+            <fieldset>
+                <div  style="border: 1px solid red; width:700px; height:60vh; background-image:linear-gradient(121.48831002673808deg, rgba(232, 205, 179,1) 55.30371179183324%,rgba(232, 205, 179,1) 61.034018347660705%,rgba(175, 237, 214,1) 73.3994167049726%,rgba(175, 237, 214,1) 79.4313183426857%)
+                ;">
+                    <table class="tab" style="width: 700px;">
+                        <tr>
+                            <td style="width:150px;" >
+                                <img class="img1" src="/static/assets/images/download.jpeg" alt="logo">
+                            </td>
+                            <td class="">
+                                <span class="gov"> Government of nepal </span> <br>
+                                <span class="gov2"> Non professional driving license </span> <br>
+                          </td>
+                          <td  style="width:150px;" >
+                            <img style="padding:5px;" class="img2" src="/static/assets/images/Flag-Nepal.jpeg">
+                        </td>
+                        </tr>
+                    </table>
+
+                    <table  class="tab2" style="width: 700px;">
+                        <tr>
+                            <td  class="aq">
+                                <h3  style="margin-top: -10px;">L.NO: <span style="font-size: 12px; font-weight:500;" id="licenceno2"></span></h3> <br>
+                                <h3  style="margin-top: -30px;">B.G: <span style="font-size: 12px; font-weight:500;" id="bloodgroup2"></span></h3> <br>
+                                <img style="padding:5px; margin-top:-37px;" class="img3" src="/static/assets/images/Capture.jpeg" alt="">
+                                <h3  style="margin-top: 10px;">D.O.I: <span style="font-size: 12px; font-weight:500;" id="doi2"></span></h3> <br>
+                                <h3  style="margin-top: -30px;">D.O.E: <span style="font-size: 12px; font-weight:500;" id="doe2"></span></h3> <br>
+                            </td>
+                            <td class="nam">
+                                <h3 style="margin-left: 35px;">Name: <span style="font-size: 12px; font-weight:500;" id="name2"></span> </h3><br>
+                                <h3 style="margin-left: 35px; margin-top: -25px;">Address: <span style="font-size: 12px; font-weight:500;" id="address2"></span></h3> <br>
+                                <h3 style="margin-left: 35px; margin-top: -25px;">F.Name: <span style="font-size: 12px; font-weight:500;" id="fathername2"></span></h3> <br>
+                                <h3 style="margin-left: 35px; margin-top: -25px;">D.O.B: <span style="font-size: 12px; font-weight:500;" id="dateofbirth2"></span></h3> <br>
+                                <h3 style="margin-left: 35px; margin-top: -25px;">Citizenship No: <span style="font-size: 12px; font-weight:500;" id="citizinshipno2"></span></h3> <br>
+                                <h3 style="margin-left: 35px; margin-top: -25px;">Phone No: <span style="font-size: 12px; font-weight:500;" id="contactno2"></span></h3> <br>
+                            </td>
+                            <td style="width:150px;" >
+                                <img class="img2" style=" border:1px solid red; margin-top: -55px;" src="/static/assets/images/no.jpeg" alt="">
+                                <h3  style="margin-top: 1px;">Category: <span style="font-size: 12px; font-weight:500;" id="category2"></span></h3> <br>
+
+                            </td>
+                        </tr>
+                    </table>
+                    <table style="width: 700px;">
+                        <tr>
+                            <td style="text-align: center;">
+                                <input style="height: 40px;" type="text" class="form-control" id="exampleInputEmail1"><br> 
+                                <label for="exampleInputEmail1">Issued By</label>  
+                            </td>
+                            <td style="text-align: center;">                              
+                                <input style="height: 40px;" type="text" class="form-control" id="exampleInputEmail1"> <br>
+                                <label for="exampleInputEmail1">Signature</label>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </fieldset>
+                
+        </div>
+    </div>
+        
+</div>
+    <button onclick="toPdf()">download</button>
+    <script>
+        function toPdf(){
+            var element = document.getElementById("mypdf");
+        
+           html2pdf(element, {
+               margin:       10,
+               filename:     'myfile.pdf',
+               image:        { type: 'jpeg' , quality: 0.98 },
+               html2canvas:  { scale: 2, logging: true, dpi: 192, letterRendering: true },
+               jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+             });
+             html2pdf().from(element).save();
+        }
+
+
+var name = "", licenceno="", fathername="", bloodgroup="", address="", dateofbirth="", citizinshipno="", contactno="", category="", doi="", doe="";
+document.getElementById("name").addEventListener("keyup",function(){
+    // name = document.getElementById("name").value;
+    
+    document.getElementById("name2").innerHTML=this.value;
+});
+
+document.getElementById("licenceno").addEventListener("keyup",function(){
+    // name = document.getElementById("name").value;
+    
+    document.getElementById("licenceno2").innerHTML=this.value;
+});
+document.getElementById("fathername").addEventListener("keyup",function(){
+    // name = document.getElementById("name").value;
+    document.getElementById("fathername2").innerHTML=this.value;
+});
+document.getElementById("bloodgroup").addEventListener("keyup",function(){
+    // name = document.getElementById("name").value;
+    
+    document.getElementById("bloodgroup2").innerHTML=this.value;
+});
+document.getElementById("address").addEventListener("keyup",function(){
+    // name = document.getElementById("name").value;
+    
+    document.getElementById("address2").innerHTML=this.value;
+});
+document.getElementById("dateofbirth").addEventListener("keyup",function(){
+    // name = document.getElementById("name").value;
+    
+    document.getElementById("dateofbirth2").innerHTML=this.value;
+});
+document.getElementById("citizinshipno").addEventListener("keyup",function(){
+    // name = document.getElementById("name").value;
+    
+    document.getElementById("citizinshipno2").innerHTML=this.value;
+});
+document.getElementById("contactno").addEventListener("keyup",function(){
+    // name = document.getElementById("name").value;
+    
+    document.getElementById("contactno2").innerHTML=this.value;
+});
+document.getElementById("category").addEventListener("keyup",function(){
+    // name = document.getElementById("name").value;
+    
+    document.getElementById("category2").innerHTML=this.value;
+});
+document.getElementById("doi").addEventListener("keyup",function(){
+    // name = document.getElementById("name").value;
+    
+    document.getElementById("doi2").innerHTML=this.value;
+});
+document.getElementById("doe").addEventListener("keyup",function(){
+    // name = document.getElementById("name").value;
+    
+    document.getElementById("doe2").innerHTML=this.value;
+});
+
+
+    </script>
+</body>
+</html>
+
+<!--
+
+HTML + CSS -> PNG (html2canvas)
+PNG -> Add to PDF (jsPDF)
+Download PDF (jsPDF)
+
+-->
