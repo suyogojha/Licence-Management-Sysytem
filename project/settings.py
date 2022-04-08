@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-tv+%@gr!5z=66st##h(sn=lu40+&d=v7&l$i5#!k@bh73%ssiv'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["licencemanagementsystem.herokuapp.com"]
 
