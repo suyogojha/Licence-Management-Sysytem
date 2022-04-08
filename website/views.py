@@ -79,3 +79,17 @@ def ExamResult(request):
                }
       
     return render(request, "examresult.html", context)
+
+
+def LocationOFTrial(request):
+    data = trialdate.objects.all()
+    context = {
+        "data":data,
+               }
+      
+    return render(request, "Trialdatetime.html", context)
+
+
+
+
+

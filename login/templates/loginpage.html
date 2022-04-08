@@ -21,19 +21,20 @@
                             <div class="col-xl-12">
                                 <div class="auth-form">
 									<div class="text-center mb-3">
-										<a href=""><img src="/static/images/logo-full.png" alt=""></a>
+										<a href="/"><img src="/static/images/circle-hunt.png" alt=""></a>
 									</div>
                                     <h4 class="text-center mb-4">Sign in your account</h4>
 
 
                                     <form action="" method="POST" autocomplete="off">
+                                        {% csrf_token %}
                                         <div class="mb-3">
                                             <label class="mb-1"><strong>User Name</strong></label>
-                                            <input type="text" class="form-control" placeholder="Enter You username">
+                                            <input type="text" name="username" class="form-control" placeholder="Enter You username">
                                         </div>
                                         <div class="mb-3">
                                             <label class="mb-1"><strong>Password</strong></label>
-                                            <input type="password" class="form-control" placeholder="Enter your password">
+                                            <input type="password" name="password" class="form-control" placeholder="Enter your password">
                                         </div>
                                         <div class="row d-flex justify-content-between mt-4 mb-2">
                                             <div class="mb-3">

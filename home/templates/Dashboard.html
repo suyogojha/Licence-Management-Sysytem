@@ -180,7 +180,7 @@
                   </svg>
                   <span class="ms-2">Inbox </span>
                 </a>
-                <a href="page-error-404.html" class="dropdown-item ai-icon">
+                <a href="{% url 'login:logoutUser' %}" class="dropdown-item ai-icon">
                   <svg
                     id="icon-logout"
                     xmlns="http://www.w3.org/2000/svg"
@@ -238,18 +238,25 @@
         </li>
         <li>
           <a href="{% url 'home:TrialDateTime' %}" aria-expanded="false">
-            <i class="fas fa-address-book"></i>
+            <i class="fas fa-certificate"></i>
             <span class="nav-text">Trial Date </span>
           </a>
         </li>
         <li>
           <a href="{% url 'home:genlicence' %}" aria-expanded="false">
-            <i class="fas fa-address-book"></i>
+            <i class="fas fa-brain"></i>
             <span class="nav-text">Licence </span>
           </a>
         </li>
+        <li>
+          <a href="/Database" aria-expanded="false">
+            
+            <i class="fas fa-blog"></i>
+            <span class="nav-text">Database </span>
+          </a>
+        </li>
 		  <li>
-			<a href="#" aria-expanded="false">
+			<a href="{% url 'login:logoutUser' %}" aria-expanded="false">
 			  <i class="fas fa-arrow-left"></i>
 			  <span class="nav-text">Logout </span>
 			</a>
@@ -305,8 +312,8 @@
                       <div>
                         <div class="">
                           <h2 class="fs-32 font-w700">{{data3}}</h2>
-                          <span class="fs-18 font-w500 d-block">New Projects</span>
-                          <span class="d-block fs-16 font-w400"><small class="text-success">-2%</small> than last month</span>
+                          <span class="fs-18 font-w500 d-block">Notices</span>
+                          <span class="d-block fs-16 font-w400"><small class="text-success">+2%</small> than last month</span>
                         </div>
                       </div>
                       <div id="NewCustomers1"></div>

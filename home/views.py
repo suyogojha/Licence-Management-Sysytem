@@ -3,8 +3,10 @@ from django.http import HttpResponse, HttpResponseRedirect
 from home.models import *
 from django.contrib import messages
 from website.models import *
+from django.contrib.auth.decorators import login_required
 
 # Create your models here.
+@login_required(login_url='login:Login')
 def Dashboard(request):
     data = OnlineLicenceForm.objects.all().count()
     data2 = examResult.objects.all().count()
@@ -19,13 +21,13 @@ def Dashboard(request):
 
     return render(request, "Dashboard.html", conte)
 
-
+@login_required(login_url='login:Login')
 def Profile(request):
     return render(request, "profile.html")
 
 
 
-
+@login_required(login_url='login:Login')
 def Licence_search(request):
     if request.method =='POST':
             exam = examResult()
@@ -47,7 +49,7 @@ def Licence_search(request):
     return render(request, "licencesearch.html")
 
 
-
+@login_required(login_url='login:Login')
 def online_form(request):
     data = OnlineLicenceForm.objects.all() 
     context = {
@@ -56,7 +58,7 @@ def online_form(request):
     return render(request, "onlineform.html", context)
 
 
-
+@login_required(login_url='login:Login')
 def Rules(request):
     if request.method == 'POST':
         rule = notices()
@@ -69,13 +71,24 @@ def Rules(request):
 
 
 
+
+
+
+@login_required(login_url='login:Login')
 def genlicence(request):
     return render(request, "LicenceGenerate.html")
 
+
+
+@login_required(login_url='login:Login')
 def TrialDateTime(request):
-    data = examResult.objects.get(status='Passed')
-    contex= {
-        "data":data,
-    }
-    return render(request, "trialdate.html", contex)
+    if request.method == 'POST':
+        tri = trialdate()
+        trialdatetime = request.POST.get('trialdatetime')
+        location = request.POST.get('location')
+        tri.trialdatetime = trialdatetime
+        tri.location = location
+        tri.save()
+        return redirect('/Dashboard')  
+    return render(request, "trialdatetimeh.html")
 
