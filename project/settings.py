@@ -26,7 +26,9 @@ SECRET_KEY = 'django-insecure-tv+%@gr!5z=66st##h(sn=lu40+&d=v7&l$i5#!k@bh73%ssiv
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["licencemanagementsystem.herokuapp.com/"]
+ALLOWED_HOSTS = [
+    'licencemanagementsystem.herokuapp.com'
+    ]
 
 
 # Application definition
